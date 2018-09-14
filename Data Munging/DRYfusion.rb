@@ -1,27 +1,5 @@
 class DryFusion
 
-#  def initialize path=0
-#    if path != 0
-#      if File.exist?(path)
-#        @file = File.open(path)
-#        @data = []
-#        getData
-#      else
-#        puts 'The file dont exist'
-#      end
-#    else
-#      puts 'you have not written a path'
-#    end
-#  end
-#
-#  private
-#  def getData
-#    dataLines = @fileSoccer.readlines
-#    dataLines.each do |i|
-#      @data << [i[1,19], i[42,3].to_f, i[49,3].to_f]
-#    end
-#  end
-
   def initialize path
     @file = File.open(path)
     @data = []
