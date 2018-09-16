@@ -27,25 +27,8 @@ class SoccerLeague
     end
     minDiffTeam
   end
-
-  #def minGoalDifference
-  #  getData
-  #  comparador = @data[2][1] - @data[2][2]
-  #  minDiffTeam = @data[2][0]
-  #  @data.each do |i|
-  #    if i[0] != 0
-  #      if i[1]-i[2] < comparador
-  #        comparador = i[1]-i[2]
-  #        minDiffTeam = [i[0],comparador]
-  #      end
-  #    end
-  #  end
-  #  minDiffTeam
-  #end
 end
 
 soccer = SoccerLeague.new
 team = soccer.minGoalDifference
 puts "Team: #{team[0]}, difference goals #{team[1]}"
-#soccer.getData
-#puts "#{soccer.data}"

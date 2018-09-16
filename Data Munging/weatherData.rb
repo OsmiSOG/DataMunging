@@ -30,13 +30,6 @@ class WeatherData
     minDiffDay
   end
 
-  #def temperatureDifference
-  #  getData
-  #  @data.each do |i|
-  #    i << i[1]-i[2]
-  #  end
-  #  @data
-  #end
 end
 
 ejemplo = WeatherData.new

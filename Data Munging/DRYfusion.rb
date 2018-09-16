@@ -5,14 +5,15 @@ class DryFusion
     @data = []
   end
 
-  def difference
-    comparador = (@data[2][1] - @data[2][2]).abs
-    minDiff = [@data[2][0], comparador]
-    @data.each do |i|
-      if i[0].to_i != 0
-        if (i[1]-i[2]).abs < comparador
-          comparador = (i[1]-i[2]).abs
-          minDiff = [i[0],comparador]
+  def difference data = getData
+    @data = data
+    comparador = (@data[2][:columnA] - @data[2][:columnB]).abs
+    minDiff = {name:@data[2][:name], diferencia:comparador}
+    @data.each do |line|
+      if line[:name].to_i != 0
+        if (line[:columnA]-line[:columnB]).abs < comparador
+          comparador = (line[:columnA]-line[:columnB]).abs
+          minDiff = {name:line[:name], diferencia:comparador}
         end
       end
     end
@@ -21,19 +22,26 @@ class DryFusion
 
 end
 
+
 class WeatherData < DryFusion
 
   def initialize path
     super(path)
-    getData
   end
 
   private
   def getData
     dataLines = @file.readlines
+    lines = []
     dataLines.each do |i|
-      @data << [i[1..3], i[4..9].to_f, i[10..15].to_f]
+      lines << {name: i[1..3], columnA: i[4..9].to_f, columnB: i[10..15].to_f}
     end
+    lines
+  end
+
+  public
+  def difference
+    super(getData)
   end
 end
 
@@ -41,15 +49,21 @@ class SoccerLeague < DryFusion
 
   def initialize path
     super(path)
-    getData
   end
 
   private
   def getData
     dataLines = @file.readlines
+    lines = []
     dataLines.each do |i|
-      @data << [i[1,19], i[43,2].to_i, i[50,2].to_i]
+      lines << {name: i[1,19], columnA: i[43,2].to_i, columnB: i[50,2].to_i}
     end
+    lines
+  end
+
+  public
+  def difference
+    super(getData)
   end
 end
 
@@ -59,5 +73,5 @@ soccer = SoccerLeague.new('football.dat')
 answerW = weather.difference
 answerS = soccer.difference
 
-puts "Dia: #{answerW[0]} , diferencia: #{answerW[1]} grados"
-puts "Team: #{answerS[0]}, difference goals: #{answerS[1]}"
+puts "Dia: #{answerW[:name]} , diferencia: #{answerW[:diferencia]} grados"
+puts "Team: #{answerS[:name]}, difference goals #{answerS[:diferencia]}"
