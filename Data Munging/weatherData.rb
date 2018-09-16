@@ -1,3 +1,5 @@
+###### Part One: Weather Data #######
+
 class WeatherData
   attr_accessor :data
 
