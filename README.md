@@ -1,4 +1,4 @@
-# [DataMunging]http://codekata.com/kata/kata04-data-munging/
+# [DataMunging](http://codekata.com/kata/kata04-data-munging/)
 
 Part One: Weather Data
 
