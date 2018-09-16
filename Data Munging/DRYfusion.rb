@@ -1,3 +1,5 @@
+##### Part Three: DRY Fusion #####
+
 class DryFusion
 
   def initialize path
